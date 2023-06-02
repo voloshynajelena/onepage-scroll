@@ -1,266 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Mad Masters</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="assets/fonts/fonts.css" />
-  </head>
-  <body class="mat-typography">
-    <app-root></app-root>
-    <script
-      src="https://kit.fontawesome.com/ce4b84ab95.js"
-      crossorigin="anonymous"
-    ></script>
+<html>
+<head>
+  <title>Scrolling Example</title>
+  <style>
+    /* Add some basic styles for demonstration purposes */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+    section {
+      height: 100vh; /* Make sections fill the entire viewport height */
+      width: 100vw;
+      padding: 100px 0;
+      text-align: center;
+      transition: 0.5s ease-out;
+    }
+    section:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    #section1 {
+      background-color: #0A89AA;
+    }
+    #section2 {
+      background-color: #2b542c;
+    }
+    #section3 {
+      background-color: tomato;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+    #section4 {
+      background-color: #FFD500;
+    }
+    #section5 {
+      background-color: #dd1111;
+      z-index: 3;
+      top: 100vh;
+      position: fixed;
+    }
+    .section-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    #section2.section-fixed {
+      /*z-index: -1;*/
+      position: relative;
+    }
+    #section3.section-left {
+      left: -100vw;
+    }
+    #section4.section-fixed {
+    }
+    #section5.section-bottom {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .onepage-pagination {
+      position: fixed;
+      right: 10px;
+      top: 39.4vh;
+      z-index: 10;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      padding: 0 67px 0 0;
+    }
+    .onepage-pagination li {
+      padding: 0;
+      text-align: center;
+      cursor: pointer;
+    }
+    .onepage-pagination li a {
+      padding: 15px;
+      width: 4px;
+      height: 4px;
+      display: block;
+      box-sizing: border-box;
+    }
+    .onepage-pagination li a:before {
+      content: '';
+      position: absolute;
+      transition: background 0.2s, width 0.3s, height 0.3s;
+      width: 5px;
+      height: 5px;
+      border: 0px solid rgb(68, 68, 68);
+      background: rgb(68, 68, 68);
+      transform: matrix3d(0.7071, 0.7071, 0, 0, -0.7071, 0.7071, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    }
+    .onepage-pagination li a.active:before {
+      width: 12px;
+      height: 12px;
+      background: none;
+      border: 1px solid rgb(68, 68, 68);
+      margin-top: -4px;
+      left: 11px;
+    }
+    .main-header.dark+.onepage-pagination li a:before {
+      background-color: rgba(33, 34, 36, .5);
+      border-color: rgba(33, 34, 36, .5);
+    }
+  </style>
+</head>
+<body>
+<ul class="onepage-pagination">
+  <li><a href="#section1" class="active"></a></li>
+  <li><a href="#section2"></a></li>
+  <li><a href="#section3"></a></li>
+  <li><a href="#section4"></a></li>
+  <li><a href="#section5"></a></li>
+</ul>
+<main>
+  <section id="section1">
+    <h1>Section 1</h1>
+    <p>This is the content of Section 1.</p>
+  </section>
 
-    <script
-      type="text/javascript"
-      src="assets/js/libs/jquery-3.0.0.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="assets/js/plugins/jquery.onepage-scroll.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="assets/js/plugins/modernizr.js"
-    ></script>
-    <script type="text/javascript" src="assets/js/scroll_up.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".main").onepage_scroll({
-          sectionContainer: "section",
-          responsiveFallback: 600,
-          loop: false,
-          direction: "vertical",
-        });
-      });
-    </script>
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function () {
-        var slidesWrapper = document.querySelector(".cd-hero-slider");
-        //check if a .cd-hero-slider exists in the DOM
-        if (slidesWrapper) {
-          // var primaryNav = document.querySelector(".cd-primary-nav");
-          var sliderNav = document.querySelector(".cd-slider-nav");
-          var navigationMarker = document.querySelector(".cd-marker");
-          var slides = slidesWrapper.querySelectorAll("li");
-          var slidesNumber = slides.length;
-          var visibleSlidePosition = 0;
-          var autoPlayId;
-          var autoPlayDelay = 8000;
+  <section id="section2">
+    <h1>Section 2</h1>
+    <p>This is the content of Section 2.</p>
+  </section>
 
-          //upload videos (if not on mobile devices)
-          // uploadVideo(slidesWrapper);
-          //autoplay slider
-          setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
-          //on mobile - open/close primary navigation clicking/tapping the menu icon
-          // primaryNav.addEventListener("click", function (event) {
-          //   if (event.target.classList.contains("cd-primary-nav")) {
-          //     this.children[0].classList.toggle("is-visible");
-          //   }
-          // });
+  <section id="section3" class="section-left">
+    <h1>Section 3</h1>
+    <p>This is the content of Section 3.</p>
+  </section>
 
-          //change visible slide
-          sliderNav.addEventListener("click", function (event) {
-            event.preventDefault();
-            var selectedItem = event.target;
-            if (
-              selectedItem.tagName === "LI" &&
-              !selectedItem.classList.contains("selected")
-            ) {
-              var selectedPosition = Array.prototype.indexOf.call(
-                sliderNav.children,
-                selectedItem
-              );
-              var activePosition = Array.prototype.indexOf.call(
-                slidesWrapper.querySelectorAll("li.selected"),
-                slidesWrapper.querySelector("li.selected")
-              );
-              if (activePosition < selectedPosition) {
-                nextSlide(
-                  slidesWrapper.querySelector(".selected"),
-                  slidesWrapper,
-                  sliderNav,
-                  selectedPosition
-                );
-              } else {
-                prevSlide(
-                  slidesWrapper.querySelector(".selected"),
-                  slidesWrapper,
-                  sliderNav,
-                  selectedPosition
-                );
-              }
-              //this is used for the autoplay
-              visibleSlidePosition = selectedPosition;
-              updateSliderNavigation(sliderNav, selectedPosition);
-              updateNavigationMarker(navigationMarker, selectedPosition + 1);
-              //reset autoplay
-              setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
-            }
-          });
-        }
+  <section id="section4">
+    <h1>Section 4</h1>
+    <p>This is the content of Section 4.</p>
+  </section>
 
-        function nextSlide(visibleSlide, container, pagination, n) {
-          visibleSlide.classList.remove("selected", "from-left", "from-right");
-          visibleSlide.classList.add("is-moving");
-          visibleSlide.addEventListener("transitionend", function () {
-            visibleSlide.classList.remove("is-moving");
-          });
+  <section id="section5">
+    <h1>Section 5</h1>
+    <p>This is the content of Section 5.</p>
+  </section>
+</main>
 
-          var slides = container.children;
-          var selectedSlide = slides[n];
-          selectedSlide.classList.add("selected", "from-right");
-          Array.prototype.slice
-            .call(slides)
-            .filter(function (slide, index) {
-              return index < n;
-            })
-            .forEach(function (slide) {
-              slide.classList.add("move-left");
-            });
+<script>
+  // JavaScript code for scrolling
+  // TODO: create url handler for swipe and touch
+  const sections = document.querySelectorAll('section');
+  const navDots = document.querySelectorAll('.onepage-pagination li a');
+  const animationTime = 500;
+  let lastAnimation = 0;
+  let quietPeriod = 100;
+  let currentSectionIndex = 0;
 
-          // checkVideo(visibleSlide, container, n);
-        }
+  function scrollToSection(event) {
+    event.preventDefault();
 
-        function prevSlide(visibleSlide, container, pagination, n) {
-          visibleSlide.classList.remove("selected", "from-left", "from-right");
-          visibleSlide.classList.add("is-moving");
-          visibleSlide.addEventListener("transitionend", function () {
-            visibleSlide.classList.remove("is-moving");
-          });
+    const targetId = event.target.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
 
-          var slides = container.children;
-          var selectedSlide = slides[n];
-          selectedSlide.classList.add("selected", "from-left");
-          Array.prototype.slice
-            .call(slides)
-            .filter(function (slide, index) {
-              return index > n;
-            })
-            .forEach(function (slide) {
-              slide.classList.remove("move-left");
-            });
+    if (!targetSection) return; // Exit if target section not found
 
-          // checkVideo(visibleSlide, container, n);
-        }
+    const targetSectionIndex = Array.from(sections).indexOf(targetSection);
+    const scrollDirectionNav = targetSectionIndex - currentSectionIndex > 0 ? 1 : 0;
 
-        function updateSliderNavigation(pagination, n) {
-          var navigationDot = pagination.querySelector(".selected");
-          if (navigationDot) {
-            navigationDot.classList.remove("selected");
-          }
-          var selectedElement = pagination.children[n];
-          if (selectedElement) {
-            selectedElement.classList.add("selected");
-          }
-        }
+    setNavDotActiveByNumber(targetSectionIndex);
+    scrollToNextSection(event, scrollDirectionNav);
+    // TODO: create url handler for anchor -- if(window.location.hash != "" && window.location.hash != "#1") {}
+  }
 
-        function setAutoplay(wrapper, length, delay) {
-          if (wrapper.classList.contains("autoplay")) {
-            clearInterval(autoPlayId);
-            autoPlayId = setInterval(function () {
-              autoplaySlider(length);
-            }, delay);
-          }
-        }
+  function setNavDotActiveByNumber(number) {
+    navDots.forEach(function(element) {
+      element.classList?.remove("active");
+    });
+    navDots[number].classList.add('active');
+  }
 
-        function autoplaySlider(length) {
-          if (visibleSlidePosition < length - 1) {
-            nextSlide(
-              slidesWrapper.querySelector(".selected"),
-              slidesWrapper,
-              sliderNav,
-              visibleSlidePosition + 1
-            );
-            visibleSlidePosition += 1;
-          } else {
-            prevSlide(
-              slidesWrapper.querySelector(".selected"),
-              slidesWrapper,
-              sliderNav,
-              0
-            );
-            visibleSlidePosition = 0;
-          }
-          updateNavigationMarker(navigationMarker, visibleSlidePosition + 1);
-          updateSliderNavigation(sliderNav, visibleSlidePosition);
-        }
+  function scrollToNextSection(event, scrollDirectionNav = null) {
+    const currentPosition = window.pageYOffset;
+    const scrollDirection = scrollDirectionNav || Math.sign(event.deltaY);
+    const timeNow = new Date().getTime();
 
-        // function uploadVideo(container) {
-        //   var videoWrappers = container.querySelectorAll(
-        //     ".cd-bg-video-wrapper"
-        //   );
-        //   videoWrappers.forEach(function (videoWrapper) {
-        //     if (videoWrapper.offsetParent !== null) {
-        //       // if visible - we are not on a mobile device
-        //       var videoUrl = videoWrapper.getAttribute("data-video");
-        //       var video = document.createElement("video");
-        //       video.loop = true;
-        //       video.innerHTML =
-        //         '<source src="' +
-        //         videoUrl +
-        //         '.mp4" type="video/mp4"><source src="' +
-        //         videoUrl +
-        //         '.webm" type="video/webm">';
-        //       videoWrapper.appendChild(video);
-        //       // play video if first slide
-        //       if (
-        //         videoWrapper.parentNode.classList.contains("selected") &&
-        //         videoWrapper.parentNode.classList.contains("cd-bg-video")
-        //       ) {
-        //         video.play();
-        //       }
-        //     }
-        //   });
-        // }
-        //
-        // function checkVideo(hiddenSlide, container, n) {
-        //   //check if a video outside the viewport is playing - if yes, pause it
-        //   var hiddenVideo = hiddenSlide.querySelector("video");
-        //   if (hiddenVideo) {
-        //     hiddenVideo.pause();
-        //   }
-        //   //check if the select slide contains a video element - if yes, play the video
-        //   var visibleVideo = container.children[n].querySelector("video");
-        //   if (visibleVideo) {
-        //     visibleVideo.play();
-        //   }
-        // }
+    // Cancel scroll if currently animating or within quiet period
+    if(timeNow - lastAnimation < quietPeriod + animationTime) {
+      event.preventDefault();
+      return;
+    }
 
-        function updateNavigationMarker(marker, n) {
-          marker.classList.removePrefix("item");
-          marker.classList.add("item-" + n);
-        }
+    let targetSectionIndex = 0;
 
-        DOMTokenList.prototype.removePrefix = function (prefix) {
-          var classes = this.toString().split(" ");
-          for (var i = 0; i < classes.length; i++) {
-            if (classes[i].indexOf(prefix) === 0) {
-              this.remove(classes[i]);
-            }
-          }
-        };
-      });
-    </script>
-    <script type="text/javascript">
-      window.onscroll = function () {
-        if (section4.classList.contains("active")) {
-          section4.style.zIndex = "20";
-        } else section4.style.zIndex = "15";
-      };
-    </script>
-  </body>
+    if (scrollDirection === 1) {
+      if (currentSectionIndex === sections.length - 1) {
+        // TODO: Scrolling from the last section to the first section;
+        // Do nothing in this case;
+      } else {
+        targetSectionIndex = currentSectionIndex + 1;
+        scrollDownToSection(targetSectionIndex, currentPosition);
+      }
+    } else {
+      if (currentSectionIndex === 0) {
+        // TODO: Scrolling from the first section to the last section;
+        // Do nothing in this case;
+      } else {
+        targetSectionIndex = currentSectionIndex - 1;
+        scrollUpToSection(targetSectionIndex, currentPosition);
+      }
+    }
+    lastAnimation = timeNow;
+  }
+
+  function scrollDownToSection(targetSectionIndex, currentPosition) {
+    if (targetSectionIndex === 1) {
+      initScroll(targetSectionIndex, currentPosition);
+    } else if (targetSectionIndex === 2) {
+      setTimeout(() => sections[1].classList.add('section-fixed'), animationTime);
+      sections[2].classList?.remove('section-left');
+      currentSectionIndex = currentSectionIndex + 1;
+    } else if (targetSectionIndex === 3) {
+      sections[2].classList.add('section-left');
+      sections[3].classList.add('section-fixed');
+      currentSectionIndex = currentSectionIndex + 1;
+    } else if (targetSectionIndex === 4) {
+      setTimeout(() => sections[1].classList?.remove('section-fixed'), animationTime);
+      setTimeout(() => sections[3].classList?.remove('section-fixed'), animationTime);
+      sections[4].classList?.add('section-bottom');
+      currentSectionIndex = currentSectionIndex + 1;
+    }
+    setNavDotActiveByNumber(targetSectionIndex);
+  }
+
+  function scrollUpToSection(targetSectionIndex, currentPosition) {
+    if (targetSectionIndex === 0) {
+      initScroll(0, currentPosition);
+      sections[1].classList?.remove('section-fixed');
+    } else if (targetSectionIndex === 1) {
+      sections[2].classList.add('section-left');
+      currentSectionIndex = currentSectionIndex - 1;
+    } else if (targetSectionIndex === 2) {
+      sections[2].classList?.remove('section-left');
+      setTimeout(() => sections[1].classList.add('section-fixed'), 1000);
+      setTimeout(() => sections[3].classList?.remove('section-fixed'), 1000);
+      currentSectionIndex = currentSectionIndex - 1;
+    } else if (targetSectionIndex === 3) {
+      sections[3].classList.add('section-fixed');
+      sections[4].classList?.remove('section-bottom');
+      currentSectionIndex = currentSectionIndex - 1;
+    }
+    setNavDotActiveByNumber(targetSectionIndex);
+  }
+
+  function initScroll(targetSectionIndex, currentPosition) {
+    const targetSection = sections[targetSectionIndex];
+
+    if (!targetSection) return; // Exit if target section not found
+
+    const targetOffsetTop = targetSection.offsetTop;
+    const distance = targetOffsetTop - currentPosition;
+    const duration = Math.abs(distance / 3); // Adjust scrolling speed by changing the division factor
+    const startTime = performance.now();
+
+    function step(timestamp) {
+      const elapsedTime = timestamp - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+      const easing = easeOutQuad(progress);
+      window.scrollTo(0, currentPosition + distance * easing);
+
+      if (elapsedTime < duration) {
+        window.requestAnimationFrame(step);
+      } else {
+        currentSectionIndex = targetSectionIndex;
+      }
+    }
+
+    window.requestAnimationFrame(step);
+  }
+
+  // Easing function for smooth scrolling animation
+  function easeOutQuad(t) {
+    return t * (2 - t);
+  }
+
+  // Add click event listener for navigation dots
+  navDots.forEach(function(link) {
+    link.addEventListener('click', scrollToSection);
+  });
+
+  // Add scroll event listener for scrolling with mouse wheel or trackpad
+  document.addEventListener('wheel', function(event) {
+    event.preventDefault();
+
+    scrollToNextSection(event);
+  }, { passive: false });
+</script>
+</body>
 </html>
