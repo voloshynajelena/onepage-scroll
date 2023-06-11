@@ -56,13 +56,10 @@
       left: 0;
     }
     #section2.section-fixed {
-      /*z-index: -1;*/
       position: relative;
     }
     #section3.section-left {
       left: -100vw;
-    }
-    #section4.section-fixed {
     }
     #section5.section-bottom {
       position: fixed;
@@ -193,7 +190,6 @@
       event.preventDefault();
       return;
     }
-
     let targetSectionIndex = 0;
 
     if (scrollDirection === 1) {
@@ -217,41 +213,51 @@
   }
 
   function scrollDownToSection(targetSectionIndex, currentPosition) {
-    if (targetSectionIndex === 1) {
-      initScroll(targetSectionIndex, currentPosition);
-    } else if (targetSectionIndex === 2) {
-      setTimeout(() => sections[1].classList.add('section-fixed'), animationTime);
-      sections[2].classList?.remove('section-left');
-      currentSectionIndex = currentSectionIndex + 1;
-    } else if (targetSectionIndex === 3) {
-      sections[2].classList.add('section-left');
-      sections[3].classList.add('section-fixed');
-      currentSectionIndex = currentSectionIndex + 1;
-    } else if (targetSectionIndex === 4) {
-      setTimeout(() => sections[1].classList?.remove('section-fixed'), animationTime);
-      setTimeout(() => sections[3].classList?.remove('section-fixed'), animationTime);
-      sections[4].classList?.add('section-bottom');
-      currentSectionIndex = currentSectionIndex + 1;
+    switch (targetSectionIndex) {
+      case 1:
+        initScroll(targetSectionIndex, currentPosition);
+        break;
+      case 2:
+        setTimeout(() => sections[1].classList.add('section-fixed'), animationTime);
+        sections[2].classList?.remove('section-left');
+        currentSectionIndex = currentSectionIndex + 1;
+        break;
+      case 3:
+        sections[2].classList.add('section-left');
+        sections[3].classList.add('section-fixed');
+        currentSectionIndex = currentSectionIndex + 1;
+        break;
+      case 4:
+        setTimeout(() => sections[1].classList?.remove('section-fixed'), animationTime);
+        setTimeout(() => sections[3].classList?.remove('section-fixed'), animationTime);
+        sections[4].classList?.add('section-bottom');
+        currentSectionIndex = currentSectionIndex + 1;
+        break;
     }
     setNavDotActiveByNumber(targetSectionIndex);
   }
 
   function scrollUpToSection(targetSectionIndex, currentPosition) {
-    if (targetSectionIndex === 0) {
-      initScroll(0, currentPosition);
-      sections[1].classList?.remove('section-fixed');
-    } else if (targetSectionIndex === 1) {
-      sections[2].classList.add('section-left');
-      currentSectionIndex = currentSectionIndex - 1;
-    } else if (targetSectionIndex === 2) {
-      sections[2].classList?.remove('section-left');
-      setTimeout(() => sections[1].classList.add('section-fixed'), 1000);
-      setTimeout(() => sections[3].classList?.remove('section-fixed'), 1000);
-      currentSectionIndex = currentSectionIndex - 1;
-    } else if (targetSectionIndex === 3) {
-      sections[3].classList.add('section-fixed');
-      sections[4].classList?.remove('section-bottom');
-      currentSectionIndex = currentSectionIndex - 1;
+    switch (targetSectionIndex) {
+      case 0:
+        initScroll(0, currentPosition);
+        sections[1].classList?.remove('section-fixed');
+        break;
+      case 1:
+        sections[2].classList.add('section-left');
+        currentSectionIndex = currentSectionIndex - 1;
+        break;
+      case 2:
+        sections[2].classList?.remove('section-left');
+        setTimeout(() => sections[1].classList.add('section-fixed'), 1000);
+        setTimeout(() => sections[3].classList?.remove('section-fixed'), 1000);
+        currentSectionIndex = currentSectionIndex - 1;
+        break;
+      case 3:
+        sections[3].classList.add('section-fixed');
+        sections[4].classList?.remove('section-bottom');
+        currentSectionIndex = currentSectionIndex - 1;
+        break;
     }
     setNavDotActiveByNumber(targetSectionIndex);
   }
